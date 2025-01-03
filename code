@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class Main {
+    public static void main(String[]args) {
+        Scanner scn = new Scanner(System.in);
+        Random random = new Random();
+
+        int randomNumber = random.nextInt(100)+1;
+
+        int guess = 0;
+        int attempts = 0;
+
+        System.out.println("********LET'S SEE HOW WELL YOU GUESS********");
+        System.out.println();
+
+        final long startTime = System.currentTimeMillis();
+
+        while (guess != randomNumber) {
+            System.out.println("Enter your guessed number: ");
+            guess = scn.nextInt();
+
+            attempts += 1;
+
+            if (guess>randomNumber)
+                System.out.println("Enter a smaller number.");
+            else if(guess<randomNumber)
+                System.out.println("Enter a greater number.");
+            else
+                System.out.println("**********YOU WON!!!**********");
+
+            System.out.println();
+        }
+
+        final long endTime = System.currentTimeMillis();
+
+        System.out.println("Attempts taken by you: " + attempts);
+        System.out.println("Total time  taken: " + ((endTime - startTime)/1000) + "sec");
+    }
+}
